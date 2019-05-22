@@ -10,7 +10,19 @@
   "env": {
     "RAILS_ENV": "production",
     "RACK_ENV": "production",
-    "RAILS_SERVE_STATIC_FILES": "true"
+    "RAILS_SERVE_STATIC_FILES": "true",
+    "STREAM_API_KEY": {
+      "description": "your Stream API key"
+    },
+    "STREAM_API_SECRET": {
+      "description": "your Stream API secret"
+    },
+    "REP_USER_ID": {
+      "description": "your representative user ID"
+    },
+    "REP_USER_TOKEN": {
+      "description": "your representative user JWT token"
+    }
   },
   "addons": ["heroku-postgresql"]
 }
