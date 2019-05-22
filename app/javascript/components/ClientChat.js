@@ -38,7 +38,6 @@ class ClientChat extends React.Component {
     });
   }
   render() {
-    console.log("Client Chat: " + this.props);
     return (
       <Chat client={this.chatClient} theme={"commerce dark"}>
         <Channel channel={this.channel}>
