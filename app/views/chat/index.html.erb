@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'application' %>
+
 <% if current_user %>
   Logged in as <%= current_user.handle %>
   <%= link_to 'Log Out', logout_path %>
@@ -8,3 +10,15 @@
 <p id=”notice”><%= notice %></p>
 
 <h1>Chat with a representative</h1>
+<div style="width: 40%; float:left; padding: 5%">
+  <h2>Client view</h2>
+  <% if current_user %>
+    <%= react_component("ClientChat", { userHandle: current_user.handle, userName: current_user.name, userToken: user_token }) %>
+  <% else %>
+    Please log in to show client chat
+  <% end %>
+</div>
+<div style="width: 40%; float:right; padding: 5%">
+  <h2>Representative view</h2>
+  <%= react_component("RepresentativeChat") %>
+</div>
