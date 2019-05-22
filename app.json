@@ -1,0 +1,16 @@
+{
+  "name": "Rails chat example",
+  "description": "An example app for getting started with chat on Rails.",
+  "website": "http://getstream.io/chat",
+  "repository": "https://github.com/GetStream/chat-rails-example",
+  "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Ruby_on_Rails_logo.svg",
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  },
+  "env": {
+    "RAILS_ENV": "production",
+    "RACK_ENV": "production",
+    "RAILS_SERVE_STATIC_FILES": "true"
+  },
+  "addons": ["heroku-postgresql"]
+}
