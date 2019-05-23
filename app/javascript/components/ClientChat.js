@@ -17,7 +17,15 @@ import "stream-chat-react/dist/css/index.css";
 class ClientChat extends React.Component {
   constructor(props) {
     super(props);
-    this.chatClient = new StreamChat(process.env.STREAM_API_KEY);
+    let apiKey;
+    if (process.env.STREAM_URL) {
+      [apiKey] = process.env.STREAM_URL.substr(8)
+        .split("@")[0]
+        .split(":");
+    } else {
+      apiKey = process.env.STREAM_API_KEY;
+    }
+    this.chatClient = new StreamChat(apiKey);
     this.chatClient.setUser(
       {
         id: this.props.userHandle,
@@ -34,7 +42,7 @@ class ClientChat extends React.Component {
         "https://cdn.chrisshort.net/testing-certificate-chains-in-go/GOPHER_MIC_DROP.png",
       name: `Support request - ${this.props.userHandle}`,
       source: "support",
-      members: [this.props.userHandle, process.env.REP_USER_ID]
+      members: [this.props.userHandle, this.props.repId]
     });
   }
   render() {
@@ -56,6 +64,7 @@ class ClientChat extends React.Component {
 ClientChat.propTypes = {
   userHandle: PropTypes.string,
   userName: PropTypes.string,
-  userToken: PropTypes.string
+  userToken: PropTypes.string,
+  repId: PropTypes.string
 };
 export default ClientChat;

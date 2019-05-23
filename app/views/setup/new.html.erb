@@ -1,0 +1,14 @@
+<h1>Configure representative user</h1>
+<%= form_tag configure_path do |form| %>
+  <div class="field">
+    <%= label_tag :handle %>
+    <%= text_field_tag :handle %>
+  </div>
+  <div class="field">
+    <%= label_tag :name %>
+    <%= text_field_tag :name %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Configure" %>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import {
   Channel,
   ChannelHeader,
@@ -21,24 +21,35 @@ import { StreamChat } from "stream-chat";
 import "stream-chat-react/dist/css/index.css";
 
 const repUserId = process.env.REP_USER_ID;
-const repUserToken = process.env.REP_USER_TOKEN;
 
 class RepresentativeChat extends React.Component {
   constructor(props) {
     super(props);
-    this.chatClient = new StreamChat(process.env.STREAM_API_KEY);
+    let apiKey;
+    if (process.env.STREAM_URL) {
+      [apiKey] = process.env.STREAM_URL.substr(8)
+        .split("@")[0]
+        .split(":");
+    } else {
+      apiKey = process.env.STREAM_API_KEY;
+    }
+    this.chatClient = new StreamChat(apiKey);
     this.chatClient.setUser(
       {
-        id: repUserId,
-        name: "Representative",
+        id: this.props.repId,
+        name: this.props.repName,
         image:
           "https://getstream.io/random_svg/?id=${repUserId}&name=Representative"
       },
-      repUserToken
+      this.props.repToken
     );
   }
   render() {
-    const filters = { type: "commerce", source: "support" };
+    const filters = {
+      type: "commerce",
+      source: "support",
+      members: { $in: [this.props.repId] }
+    };
     const sort = {
       last_message_at: -1,
       cid: 1
@@ -66,5 +77,11 @@ class RepresentativeChat extends React.Component {
     );
   }
 }
+
+RepresentativeChat.propTypes = {
+  repId: PropTypes.string,
+  repToken: PropTypes.string,
+  repName: PropTypes.string
+};
 
 export default RepresentativeChat;
