@@ -3,7 +3,8 @@
   "description": "An example app for getting started with chat on Rails.",
   "website": "http://getstream.io/chat",
   "repository": "https://github.com/GetStream/chat-rails-example",
-  "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Ruby_on_Rails_logo.svg",
+  "logo": "https://avatars3.githubusercontent.com/u/8597527",
+  "keywords": ["stream", "chat", "rails"],
   "scripts": {
     "postdeploy": "bundle exec rake db:migrate"
   },
