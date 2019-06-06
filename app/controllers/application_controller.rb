@@ -1,8 +1,12 @@
+require 'securerandom'
 require 'stream-chat'
+require 'stream-chat/version'
+require 'google/cloud/dialogflow'
 
 class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :user_token
+  helper_method :rep_token
 
   def initialize
     if ENV['STREAM_URL'].blank?
@@ -12,7 +16,9 @@ class ApplicationController < ActionController::Base
       api_key, api_secret = ENV['STREAM_URL'][8..].split('@')[0].split(':')
     end
     @chat = StreamChat::Client.new(api_key=api_key, api_secret=api_secret)
-  end
+    @dialogflow = Google::Cloud::Dialogflow::Sessions.new
+    @dialogflow_session = @dialogflow.class.session_path ENV['GOOGLE_PROJECT_ID'], SecureRandom.uuid 
+ end
 
   def current_user
     if session[:user_id]
@@ -25,4 +31,9 @@ class ApplicationController < ActionController::Base
   def user_token
     @user_token = session[:chat_token]
   end
+
+  def rep_token
+    @rep_token
+  end
+
 end

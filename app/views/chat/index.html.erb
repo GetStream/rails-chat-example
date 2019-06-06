@@ -14,7 +14,7 @@
 <div style="width: 40%; float: left; padding: 5%">
   <h2>Client view</h2>
   <% if current_user %>
-    <%= react_component("ClientChat", { userHandle: current_user.handle, userName: current_user.name, userToken: user_token, repId: session[:rep_id] }) %>
+    <%= react_component("ClientChat", { userHandle: current_user.handle, userName: current_user.name, userToken: user_token, repId: 'representative' }) %>
   <% else %>
     <p>
       Please log in to show client chat
@@ -23,9 +23,5 @@
 </div>
 <div style="width: 40%; float: right; padding: 5%">
   <h2>Representative view</h2>
-  <% if session[:rep_id].blank? %>
-    <p>Please configure the representative: <%= link_to 'Configure representative', setup_path %>
-  <% else %>
-    <%= react_component("RepresentativeChat", { repId: session[:rep_id], repToken: session[:rep_token], repName: session[:rep_name]}) %>
-  <% end %>
+  <%= react_component("RepresentativeChat", { repId: 'representative', repToken: rep_token, repName: 'Representative user'}) %>
 </div>

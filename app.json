@@ -11,7 +11,13 @@
   "env": {
     "RAILS_ENV": "production",
     "RACK_ENV": "production",
-    "RAILS_SERVE_STATIC_FILES": "true"
+    "RAILS_SERVE_STATIC_FILES": "true",
+    "GOOGLE_PROJECT_ID": {
+      "description": "your Google Project ID for the Dialogflow chatbot"
+    },
+    "GOOGLE_APPLICATION_CREDENTIALS": {
+      "description": "path to your Google Application Credentials"
+    }
   },
   "addons": ["heroku-postgresql", "stream:chat-trial"]
 }

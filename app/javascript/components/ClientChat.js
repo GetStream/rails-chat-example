@@ -36,7 +36,7 @@ class ClientChat extends React.Component {
       },
       this.props.userToken
     );
-    this.channel = this.chatClient.channel("commerce", "", {
+    this.channel = this.chatClient.channel("messaging", "", {
       // add as many custom fields as you'd like
       image:
         "https://cdn.chrisshort.net/testing-certificate-chains-in-go/GOPHER_MIC_DROP.png",
@@ -47,7 +47,7 @@ class ClientChat extends React.Component {
   }
   render() {
     return (
-      <Chat client={this.chatClient} theme={"commerce dark"}>
+      <Chat client={this.chatClient} theme={"messaging dark"}>
         <Channel channel={this.channel}>
           <Window>
             <ChannelHeader />

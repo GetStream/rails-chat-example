@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'webhook/message'
   get 'setup', to: 'setup#new', as: 'setup'
   post 'configure', to: 'setup#create', as: 'configure'
 

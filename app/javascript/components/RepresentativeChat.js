@@ -20,8 +20,6 @@ import { StreamChat } from "stream-chat";
 
 import "stream-chat-react/dist/css/index.css";
 
-const repUserId = process.env.REP_USER_ID;
-
 class RepresentativeChat extends React.Component {
   constructor(props) {
     super(props);
@@ -46,7 +44,7 @@ class RepresentativeChat extends React.Component {
   }
   render() {
     const filters = {
-      type: "commerce",
+      type: "messaging",
       source: "support",
       members: { $in: [this.props.repId] }
     };
@@ -55,7 +53,7 @@ class RepresentativeChat extends React.Component {
       cid: 1
     };
     return (
-      <Chat client={this.chatClient} theme={"commerce dark"}>
+      <Chat client={this.chatClient} theme={"messaging dark"}>
         <ChannelList
           List={ChannelListMessenger}
           Preview={ChannelPreviewCompact}
