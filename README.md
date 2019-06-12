@@ -1,4 +1,4 @@
-# Example Rails Application with Chat by Stream
+# Example Rails Application with Stream Chat
 
 **Deploy on Heroku**
 
