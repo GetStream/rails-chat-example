@@ -36,14 +36,18 @@ class ClientChat extends React.Component {
       },
       this.props.userToken
     );
-    this.channel = this.chatClient.channel("messaging", "", {
-      // add as many custom fields as you'd like
-      image:
-        "https://cdn.chrisshort.net/testing-certificate-chains-in-go/GOPHER_MIC_DROP.png",
-      name: `Support request - ${this.props.userHandle}`,
-      source: "support",
-      members: [this.props.userHandle, this.props.repId]
-    });
+    this.channel = this.chatClient.channel(
+      "messaging",
+      `support-request-${this.props.userHandle}`,
+      {
+        // add as many custom fields as you'd like
+        image:
+          "https://cdn.chrisshort.net/testing-certificate-chains-in-go/GOPHER_MIC_DROP.png",
+        name: `Support request - ${this.props.userHandle}`,
+        source: "support",
+        members: [this.props.userHandle]
+      }
+    );
   }
   render() {
     return (
