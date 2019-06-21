@@ -16,7 +16,7 @@ class WebhookController < ApplicationController
     if params[:type] == 'message.new'
       user = User.find_by handle: params[:user][:id]
       if !user.nil?
-        session_id = Digest::SHA1.hexdigest(user.handle)
+        session_id = Digest::SHA1.hexdigest(params[:cid])
         channel = @chat.query_channels({
           "cid" => params[:cid],
         })["channels"][0]["channel"]
