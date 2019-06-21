@@ -17,7 +17,6 @@ class ApplicationController < ActionController::Base
     end
     @chat = StreamChat::Client.new(api_key=api_key, api_secret=api_secret)
     @dialogflow = Google::Cloud::Dialogflow::Sessions.new
-    @dialogflow_session = @dialogflow.class.session_path ENV['GOOGLE_PROJECT_ID'], SecureRandom.uuid 
  end
 
   def current_user
