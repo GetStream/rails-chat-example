@@ -13,6 +13,10 @@ class WebhookController < ApplicationController
   end
 
   def message
+    valid_hook = @chat.verify_webhook(request.body.read, request.headers['X-SIGNATURE'])
+    if !valid_hook
+      return
+    end
     if params[:type] == 'message.new'
       user = User.find_by handle: params[:user][:id]
       if !user.nil?
