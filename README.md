@@ -1,3 +1,5 @@
+> **This repository is archived and no longer maintained.** For a current alternative, see [getstream-ruby](https://github.com/GetStream/getstream-ruby) for the server and the [React chat tutorial](https://getstream.io/chat/sdk/react/tutorial/) for the front end.
+
 # Example Rails Application with Stream Chat
 
 This example app shows you how you can use [Stream
